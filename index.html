@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Columbus, Ohio — Plan Your Visit</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%237C7FE0'/%3E%3Cpath d='M6 17 L6 11 A6 6 0 0 1 18 11 L18 17' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: 'oklch(.99 .004 277)',
+          foreground: '#18181c',
+          ink: '#1e2030',
+          'ink-foreground': '#f4f5f9',
+          'ink-muted': '#aeb0bb',
+          'ink-subtle': '#777a85',
+          'ink-line': '#3d3f4c',
+          'ink-surface': '#2f3241',
+          card: '#ffffff',
+          border: 'oklch(.92 .005 277)',
+          primary: 'oklch(.64 .16 277)',
+          'primary-hover': 'oklch(.56 .165 277)',
+          'primary-active': 'oklch(.48 .155 277)',
+          'primary-light': '#abadec',
+          'primary-xlight': '#dadbf8',
+          'primary-foreground': '#fafafa',
+          'muted-foreground': '#5a5a61',
+          success: '#30a06a',
+          'success-light': '#bcf9d3',
+          'success-xlight': '#eafbf1',
+          'success-foreground': '#0f3d28',
+          warning: '#ef7926',
+          'warning-light': '#ffd2b7',
+          'warning-xlight': '#fff1e8',
+          coral: '#e97074',
+          'coral-light': '#f8d3d4',
+        },
+        fontFamily: {
+          sans: ['"Geist"', 'ui-sans-serif', 'sans-serif'],
+          mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        },
+        borderRadius: {
+          xl: '0.75rem',
+          '2xl': '1rem',
+          '3xl': '1.5rem',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { background: oklch(.99 .004 277); color: #18181c; }
+  ::selection { background: oklch(.64 .16 277); color: #fafafa; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #abadec;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .nav-link { position: relative; color: #f4f5f9cc; }
+  .nav-link::after {
+    content: '';
+    position: absolute; left: 0; right: 100%; bottom: -4px; height: 1px;
+    background: currentColor;
+    transition: right 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .nav-link:hover { color: #f4f5f9; }
+  .nav-link:hover::after { right: 0; }
+
+  .btn-primary {
+    background: oklch(.64 .16 277);
+    color: #fafafa;
+    transition: background-color 0.2s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .btn-primary:hover { background: oklch(.56 .165 277); transform: translateY(-1px); }
+  .btn-primary:active { background: oklch(.48 .155 277); transform: translateY(0); }
+
+  .btn-outline {
+    border: 1px solid oklch(.92 .005 277);
+    color: #18181c;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .btn-outline:hover { border-color: #abadec; background: #f5f5fc; transform: translateY(-1px); }
+
+  .card-shadow { box-shadow: 0 1px 2px rgba(24,24,28,0.04), 0 8px 24px -12px rgba(24,24,28,0.10); }
+  .card-shadow-lg { box-shadow: 0 2px 4px rgba(24,24,28,0.05), 0 24px 48px -20px rgba(30,32,48,0.22); }
+
+  .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary .chev { transition: transform 0.25s ease; }
+  details[open] > summary .chev { transform: rotate(180deg); }
+
+  .gauge-track {
+    background: linear-gradient(90deg, #f4b8ae 0%, #fce0b0 45%, #bcf9d3 75%, #30a06a 100%);
+  }
+  .table-row-hover:hover { background: #fafafe; }
+
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 32s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+</style>
+</head>
+<body class="antialiased font-sans">
+
+<header class="sticky top-0 z-50 bg-ink/95 backdrop-blur border-b border-ink-line/60">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="focus-ring flex items-center gap-2.5">
+      <span class="flex items-center justify-center w-7 h-7 rounded-lg" style="background:oklch(.64 .16 277)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fafafa" stroke-width="2.4" stroke-linecap="round"><path d="M4 19 L4 11 A8 8 0 0 1 20 11 L20 19"/></svg>
+      </span>
+      <span class="text-[17px] font-semibold tracking-tight text-ink-foreground">Columbus</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-[14.5px] font-medium">
+      <a href="#neighborhoods" class="nav-link focus-ring">Neighborhoods</a>
+      <a href="#food" class="nav-link focus-ring">Food &amp; drink</a>
+      <a href="#things-to-do" class="nav-link focus-ring">Things to do</a>
+      <a href="#plan" class="nav-link focus-ring">Plan a trip</a>
+      <a href="#best-time" class="nav-link focus-ring">Best time to visit</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="#plan" class="focus-ring hidden sm:inline text-[14.5px] font-medium text-ink-foreground/90 hover:text-ink-foreground">Visitor center</a>
+      <a href="#plan" class="btn-primary focus-ring hidden sm:inline-flex items-center px-4 py-2 rounded-xl font-semibold text-[14.5px]">Start planning</a>
+      <button id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="focus-ring md:hidden text-ink-foreground p-2 -mr-2">
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        <svg id="menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu md:hidden opacity-0 -translate-y-2 pointer-events-none hidden flex-col gap-1 px-6 pb-5 pt-1 text-ink-foreground/90 bg-ink border-b border-ink-line/60">
+    <a href="#neighborhoods" class="focus-ring py-2.5 border-b border-ink-line/60">Neighborhoods</a>
+    <a href="#food" class="focus-ring py-2.5 border-b border-ink-line/60">Food &amp; drink</a>
+    <a href="#things-to-do" class="focus-ring py-2.5 border-b border-ink-line/60">Things to do</a>
+    <a href="#plan" class="focus-ring py-2.5 border-b border-ink-line/60">Plan a trip</a>
+    <a href="#best-time" class="focus-ring py-2.5">Best time to visit</a>
+    <a href="#plan" class="btn-primary focus-ring mt-3 inline-flex justify-center items-center px-4 py-2.5 rounded-xl font-semibold text-sm">Start planning</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-4">
+      <h1 class="font-extrabold leading-[1.05] tracking-[-0.03em] text-[13vw] sm:text-6xl md:text-7xl max-w-3xl text-foreground">
+        See more Columbus,<br>
+        <em class="italic font-extrabold" style="color:oklch(.64 .16 277)">without the guesswork.</em>
+      </h1>
+
+      <p class="mt-8 max-w-lg text-lg leading-[1.7] text-foreground/85 font-medium">
+        Build a trip that's full and easy, matched to how much time you actually have.
+      </p>
+
+      <p class="mt-5 max-w-lg text-[15.5px] leading-[1.7] text-muted-foreground">
+        This guide helps you <a href="#neighborhoods" class="font-semibold" style="color:oklch(.64 .16 277)">decide before you go</a>.<br>
+        Not to realize, once you're already downtown, that you skipped the best part.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        <a href="#plan" class="btn-primary focus-ring inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-[15px]">
+          Start planning free
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <p class="mt-3 text-[13.5px] text-muted-foreground">Free guide, no sign-up or itinerary app required.</p>
+    </div>
+
+    <!-- Hero image + floating cards -->
+    <div class="max-w-7xl mx-auto px-6 md:px-10 mt-10 md:mt-14">
+      <div class="relative rounded-3xl overflow-hidden card-shadow-lg">
+        <img src="https://placehold.co/1400x760/2f3241/aeb0bb?text=Downtown+Columbus+Skyline" alt="Placeholder photo of the downtown Columbus skyline along the Scioto River" class="w-full h-[340px] sm:h-[420px] md:h-[520px] object-cover">
+
+        <!-- Card: Trip readiness gauge -->
+        <div class="hidden md:block absolute left-6 md:left-10 bottom-8 w-[300px] bg-card rounded-2xl border border-border p-5 card-shadow">
+          <p class="text-[13.5px] font-medium text-muted-foreground">Trip readiness</p>
+          <p class="mt-1.5 text-3xl font-bold tracking-tight text-foreground">92<span class="text-lg font-semibold">%</span> <span class="text-[13.5px] font-medium text-muted-foreground align-middle">of a full day</span></p>
+          <div class="relative mt-4">
+            <div class="h-2 rounded-full gauge-track"></div>
+            <div class="absolute top-1/2 -translate-y-1/2" style="left:80%;"><span class="block w-0.5 h-3.5 bg-ink/30"></span></div>
+            <div class="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-success ring-4 ring-success-light" style="left:92%; transform:translate(-50%,-50%);"></div>
+          </div>
+          <p class="mt-2 text-[12.5px] text-muted-foreground">Comfortable minimum</p>
+          <p class="mt-3 text-[13px] text-foreground/80">You're ahead of pace by 12%.</p>
+        </div>
+
+        <!-- Card: Time split donut -->
+        <div class="hidden lg:block absolute right-10 top-8 w-[240px] bg-card rounded-2xl border border-border p-5 card-shadow">
+          <p class="text-[13.5px] font-medium text-muted-foreground">Time split today</p>
+          <p class="mt-1.5 text-2xl font-bold tracking-tight text-foreground">9h <span class="text-[13.5px] font-medium text-muted-foreground">planned</span></p>
+          <div class="mt-4 flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full shrink-0" style="background: conic-gradient(#e97074 0% 61%, oklch(.64 .16 277) 61% 100%);"></div>
+            <div class="text-[12.5px] leading-[1.9]">
+              <p class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#e97074"></span><span class="font-semibold text-foreground">5h30</span><span class="text-muted-foreground">Sightseeing</span></p>
+              <p class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:oklch(.64 .16 277)"></span><span class="font-semibold text-foreground">3h30</span><span class="text-muted-foreground">Food &amp; drink</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Below-image line chart card -->
+      <div class="relative md:-mt-10 mx-0 md:mx-10 bg-card rounded-2xl border border-border p-6 md:p-7 card-shadow-lg max-w-md">
+        <p class="text-[13.5px] font-medium text-muted-foreground">Foot traffic by month</p>
+        <svg viewBox="0 0 420 150" class="w-full h-auto mt-2" role="img" aria-label="Line chart of visitor foot traffic by month, low in winter and peaking in June and October">
+          <defs>
+            <linearGradient id="heroChart" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="oklch(.64 .16 277)" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="oklch(.64 .16 277)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="#77778533" stroke-width="1">
+            <line x1="0" y1="10" x2="420" y2="10"/>
+            <line x1="0" y1="52" x2="420" y2="52"/>
+            <line x1="0" y1="94" x2="420" y2="94"/>
+            <line x1="0" y1="130" x2="420" y2="130"/>
+          </g>
+          <path d="M0 122 C 20 122, 35 118, 55 108 C 80 96, 95 62, 120 44 C 145 26, 160 22, 185 30 C 210 38, 220 64, 245 66 C 265 68, 280 40, 305 28 C 330 18, 345 24, 365 46 C 385 66, 400 96, 420 108 L420 150 L0 150 Z" fill="url(#heroChart)"/>
+          <path d="M0 122 C 20 122, 35 118, 55 108 C 80 96, 95 62, 120 44 C 145 26, 160 22, 185 30 C 210 38, 220 64, 245 66 C 265 68, 280 40, 305 28 C 330 18, 345 24, 365 46 C 385 66, 400 96, 420 108" fill="none" stroke="oklch(.64 .16 277)" stroke-width="2.25" stroke-linecap="round"/>
+        </svg>
+        <div class="flex justify-between mt-1 text-[10.5px] text-muted-foreground/80">
+          <span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="bg-ink text-ink-foreground mt-20 md:mt-28">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
+        <img src="https://placehold.co/160x160/abadec/1e2030?text=JR" alt="Portrait placeholder of Jordan Reyes" class="w-16 h-16 rounded-full object-cover ring-2 ring-success/60 shrink-0">
+        <div>
+          <p class="text-[26px] md:text-[32px] font-semibold leading-[1.3] tracking-tight max-w-2xl">"If I only had one weekend, this is exactly how I'd spend it."</p>
+          <p class="mt-5 font-semibold text-ink-foreground">Jordan Reyes</p>
+          <p class="text-ink-muted text-[15px]">Columbus local, 12 years</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECISIONS / TABLE -->
+  <section id="neighborhoods" class="bg-background">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+      <h2 class="text-4xl md:text-[44px] font-bold tracking-[-0.025em] max-w-xl leading-[1.1]">Decisions made before you land.</h2>
+      <p class="mt-5 max-w-2xl text-[17px] leading-[1.7] text-muted-foreground">You always know what's worth the detour: which neighborhood to hit first, which stop needs a reservation, how long to leave. And the day that's too packed, you catch it in advance.</p>
+
+      <div class="mt-12 rounded-2xl border border-border overflow-x-auto card-shadow">
+        <table class="w-full min-w-[720px] text-[14.5px]">
+          <thead>
+            <tr class="border-b border-border text-left text-muted-foreground text-[13px] font-medium">
+              <th class="py-4 pl-6 pr-4 font-medium">Neighborhood <span class="text-border">↕</span></th>
+              <th class="py-4 px-4 font-medium">Time needed <span class="text-border">↕</span></th>
+              <th class="py-4 px-4 font-medium">Best time to go <span class="text-border">↕</span></th>
+              <th class="py-4 px-4 font-medium">Stops nearby <span class="text-border">↕</span></th>
+              <th class="py-4 px-4 font-medium">From downtown <span class="text-border">↕</span></th>
+              <th class="py-4 pr-6 pl-4 font-medium text-right">Local favorite <span class="text-border">↕</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border table-row-hover">
+              <td class="py-4 pl-6 pr-4 font-semibold">Short North</td>
+              <td class="py-4 px-4">2h30</td>
+              <td class="py-4 px-4">Evenings &amp; weekends</td>
+              <td class="py-4 px-4">3 galleries</td>
+              <td class="py-4 px-4">1.2 mi</td>
+              <td class="py-4 pr-6 pl-4 text-right font-semibold" style="color:#1f8a5c">94%</td>
+            </tr>
+            <tr class="border-b border-border table-row-hover">
+              <td class="py-4 pl-6 pr-4 font-semibold">German Village</td>
+              <td class="py-4 px-4">1h45</td>
+              <td class="py-4 px-4">Any time</td>
+              <td class="py-4 px-4">2 bookshops</td>
+              <td class="py-4 px-4">1.5 mi</td>
+              <td class="py-4 pr-6 pl-4 text-right font-semibold" style="color:#1f8a5c">91%</td>
+            </tr>
+            <tr class="border-b border-border table-row-hover">
+              <td class="py-4 pl-6 pr-4 font-semibold">North Market</td>
+              <td class="py-4 px-4">1h</td>
+              <td class="py-4 px-4">Lunch</td>
+              <td class="py-4 px-4">4 vendors</td>
+              <td class="py-4 px-4">0.8 mi</td>
+              <td class="py-4 pr-6 pl-4 text-right font-semibold text-warning">68%</td>
+            </tr>
+            <tr class="table-row-hover">
+              <td class="py-4 pl-6 pr-4 font-semibold">Franklin Park Conservatory</td>
+              <td class="py-4 px-4">2h</td>
+              <td class="py-4 px-4">Weekday mornings</td>
+              <td class="py-4 px-4">1 exhibit</td>
+              <td class="py-4 px-4">3.4 mi</td>
+              <td class="py-4 pr-6 pl-4 text-right font-semibold" style="color:#1f8a5c">96%</td>
+            </tr>
+            <tr class="border-t border-border text-muted-foreground bg-background/60">
+              <td class="py-4 pl-6 pr-4">4 stops</td>
+              <td class="py-4 px-4">7h15</td>
+              <td class="py-4 px-4">—</td>
+              <td class="py-4 px-4">10 stops</td>
+              <td class="py-4 px-4">—</td>
+              <td class="py-4 pr-6 pl-4 text-right">87% avg</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: gauge -->
+  <section class="bg-background">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
+      <div class="rounded-2xl border border-border p-6 md:p-8 card-shadow">
+        <h3 class="text-[19px] font-semibold text-foreground">The busiest spot isn't always worth the whole afternoon.</h3>
+        <p class="mt-2 max-w-xl text-[15px] leading-[1.7] text-muted-foreground">Plan around what's actually worth your time, instead of finding out afterward that the popular stop ate your whole day.</p>
+      </div>
+
+      <div class="mt-6 rounded-2xl border border-border p-6 md:p-8 card-shadow max-w-xl">
+        <p class="text-3xl font-bold tracking-tight text-foreground">92<span class="text-xl">%</span> <span class="text-[14.5px] font-medium text-muted-foreground align-middle">of a comfortable pace</span></p>
+        <div class="relative mt-5">
+          <div class="h-2.5 rounded-full gauge-track"></div>
+          <div class="absolute top-1/2 -translate-y-1/2" style="left:80%;"><span class="block w-0.5 h-4 bg-ink/30"></span></div>
+          <div class="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-success ring-4 ring-success-light" style="left:92%; transform:translate(-50%,-50%);"></div>
+        </div>
+        <p class="mt-2 text-[13px] text-muted-foreground">Comfortable minimum</p>
+        <p class="mt-4 text-[15px] text-foreground/85">You're ahead of pace by 12%.</p>
+
+        <div class="mt-6 rounded-xl border border-success-light bg-success-xlight p-4 flex gap-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5c" stroke-width="2" class="shrink-0 mt-0.5"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16" r="0.6" fill="#1f8a5c"/></svg>
+          <p class="text-[13.5px] leading-[1.6]" style="color:#0f3d28">Your plan covers the neighborhoods and food stops that matter most. You can slow down or add more without falling behind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: donut -->
+  <section class="bg-background">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
+      <h3 class="text-[19px] font-semibold text-foreground">Your plan adjusts as you go.</h3>
+      <p class="mt-2 max-w-xl text-[15px] leading-[1.7] text-muted-foreground">Add a stop mid-afternoon, and the rest of the day resettles around it — no need to start over.</p>
+
+      <div class="mt-6 rounded-2xl border border-border p-6 md:p-8 card-shadow max-w-xl">
+        <div class="flex items-center gap-8">
+          <div class="w-28 h-28 rounded-full shrink-0" style="background: conic-gradient(#e97074 0% 61%, oklch(.64 .16 277) 61% 100%);"></div>
+          <div class="text-[14.5px] leading-[2.1]">
+            <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:#e97074"></span><span class="font-semibold text-foreground">5h30</span><span class="text-muted-foreground">Sightseeing</span></p>
+            <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full" style="background:oklch(.64 .16 277)"></span><span class="font-semibold text-foreground">3h30</span><span class="text-muted-foreground">Food &amp; drink</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 max-w-xl">
+        <h3 class="text-[26px] font-bold tracking-tight text-foreground">The trip you want becomes a plan you can actually keep.</h3>
+        <p class="mt-3 text-[15px] leading-[1.7] text-muted-foreground">It's not the crowds that set your pace — it's your own. And you'll know right away if the day fits the time you have.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + calculator table -->
+  <section class="bg-background">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28 text-center">
+      <h2 class="text-3xl md:text-[38px] font-bold tracking-[-0.02em]">Now, with your actual dates.</h2>
+      <a href="#plan" class="btn-primary focus-ring inline-flex items-center mt-6 px-6 py-3 rounded-xl font-semibold text-[15px]">Build my itinerary</a>
+
+      <div class="mt-14 rounded-2xl border border-border p-5 md:p-8 card-shadow text-left overflow-x-auto">
+        <div class="flex flex-wrap gap-3 mb-6">
+          <button class="px-5 py-2 rounded-xl border border-border text-[14px] font-semibold text-foreground">Half day</button>
+          <button class="px-5 py-2 rounded-xl border-2 text-[14px] font-semibold" style="border-color:oklch(.64 .16 277); color:oklch(.64 .16 277)">Full day</button>
+        </div>
+
+        <table class="w-full min-w-[680px] text-[14px]">
+          <thead>
+            <tr class="text-left text-muted-foreground text-[12.5px] font-medium">
+              <th class="pb-3 pr-4 font-medium">Stop</th>
+              <th class="pb-3 px-4 font-medium">Time each</th>
+              <th class="pb-3 px-4 font-medium">Best time to go</th>
+              <th class="pb-3 px-4 font-medium">Admission</th>
+              <th class="pb-3 px-4 font-medium">Food &amp; drink</th>
+              <th class="pb-3 pl-4 font-medium text-right">Cost</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr class="border-t border-border">
+              <td class="py-3.5 pr-4 font-semibold">Short North</td>
+              <td class="py-3.5 px-4">2h30</td>
+              <td class="py-3.5 px-4">Evenings</td>
+              <td class="py-3.5 px-4"><span class="inline-block px-2 py-0.5 rounded-md bg-warning-xlight text-[12px] font-medium" style="color:#8a4a12">Free</span></td>
+              <td class="py-3.5 px-4">Coffee &amp; snacks</td>
+              <td class="py-3.5 pl-4 text-right font-semibold">$12</td>
+            </tr>
+            <tr class="border-t border-border">
+              <td class="py-3.5 pr-4 font-semibold">German Village</td>
+              <td class="py-3.5 px-4">1h45</td>
+              <td class="py-3.5 px-4">Any time</td>
+              <td class="py-3.5 px-4"><span class="inline-block px-2 py-0.5 rounded-md bg-warning-xlight text-[12px] font-medium" style="color:#8a4a12">Free</span></td>
+              <td class="py-3.5 px-4">Pretzel &amp; drink</td>
+              <td class="py-3.5 pl-4 text-right font-semibold">$9</td>
+            </tr>
+            <tr class="border-t border-border">
+              <td class="py-3.5 pr-4 font-semibold">North Market</td>
+              <td class="py-3.5 px-4">1h</td>
+              <td class="py-3.5 px-4">Lunch</td>
+              <td class="py-3.5 px-4"><span class="inline-block px-2 py-0.5 rounded-md bg-warning-xlight text-[12px] font-medium" style="color:#8a4a12">Free</span></td>
+              <td class="py-3.5 px-4">Lunch</td>
+              <td class="py-3.5 pl-4 text-right font-semibold">$16</td>
+            </tr>
+            <tr class="border-t border-border">
+              <td class="py-3.5 pr-4 font-semibold">Franklin Park Conservatory</td>
+              <td class="py-3.5 px-4">2h</td>
+              <td class="py-3.5 px-4">Weekday mornings</td>
+              <td class="py-3.5 px-4"><span class="inline-block px-2 py-0.5 rounded-md bg-warning-xlight text-[12px] font-medium" style="color:#8a4a12">$21</span></td>
+              <td class="py-3.5 px-4">—</td>
+              <td class="py-3.5 pl-4 text-right font-semibold">$21</td>
+            </tr>
+            <tr class="border-t border-border text-muted-foreground">
+              <td class="py-3.5 pr-4">Full day</td>
+              <td class="py-3.5 px-4">7h15</td>
+              <td class="py-3.5 px-4">—</td>
+              <td class="py-3.5 px-4">$21</td>
+              <td class="py-3.5 px-4">$37</td>
+              <td class="py-3.5 pl-4 text-right font-semibold text-foreground">$58</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="mt-5 text-[12.5px] text-muted-foreground">Estimated for two people. Admission and one meal included.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Line chart section -->
+  <section id="best-time" class="bg-background">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
+      <div class="max-w-xl">
+        <h3 class="text-[26px] font-bold tracking-tight text-foreground">Decide the pace, we'll fit the day to it.</h3>
+        <p class="mt-3 text-[15px] leading-[1.7] text-muted-foreground">You set the pace you want, without discovering the fatigue after the fact.</p>
+      </div>
+
+      <div class="mt-14 max-w-xl">
+        <h3 class="text-[26px] font-bold tracking-tight text-foreground">The day that's too packed, you can see it coming.</h3>
+        <p class="mt-3 text-[15px] leading-[1.7] text-muted-foreground">You won't get surprised by a day with no breathing room. You'll see it early enough to cut a stop or add a break.</p>
+      </div>
+
+      <div class="mt-12 rounded-2xl border border-border p-6 md:p-8 card-shadow">
+        <p class="text-[13.5px] font-medium text-muted-foreground">Best time to visit</p>
+        <svg viewBox="0 0 760 260" class="w-full h-auto mt-4" role="img" aria-label="Area chart of visitor comfort by month, low in winter, rising through spring, peaking in June and again in September and October">
+          <g stroke="#77778522" stroke-width="1">
+            <line x1="70" y1="20" x2="760" y2="20"/>
+            <line x1="70" y1="76" x2="760" y2="76"/>
+            <line x1="70" y1="132" x2="760" y2="132"/>
+            <line x1="70" y1="188" x2="760" y2="188"/>
+            <line x1="70" y1="230" x2="760" y2="230"/>
+          </g>
+          <g fill="#5a5a61" font-size="12" font-family="inherit">
+            <text x="60" y="24" text-anchor="end">100</text>
+            <text x="60" y="80" text-anchor="end">75</text>
+            <text x="60" y="136" text-anchor="end">50</text>
+            <text x="60" y="192" text-anchor="end">25</text>
+            <text x="60" y="234" text-anchor="end">0</text>
+          </g>
+          <defs>
+            <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="oklch(.64 .16 277)" stop-opacity="0.30"/>
+              <stop offset="100%" stop-color="oklch(.64 .16 277)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 205 C 110 206, 140 200, 165 188 C 200 172, 220 100, 260 66 C 300 32, 330 22, 365 40 C 400 58, 415 110, 455 118 C 490 126, 510 78, 545 52 C 580 26, 600 30, 635 56 C 670 82, 690 148, 730 178 L760 200 L760 230 L70 230 Z" fill="url(#areaFill)"/>
+          <path d="M70 205 C 110 206, 140 200, 165 188 C 200 172, 220 100, 260 66 C 300 32, 330 22, 365 40 C 400 58, 415 110, 455 118 C 490 126, 510 78, 545 52 C 580 26, 600 30, 635 56 C 670 82, 690 148, 730 178 L760 200" fill="none" stroke="oklch(.64 .16 277)" stroke-width="2.5" stroke-linecap="round"/>
+          <g fill="#5a5a61" font-size="12" font-family="inherit">
+            <text x="70" y="250">Jan</text><text x="126" y="250">Feb</text><text x="182" y="250">Mar</text>
+            <text x="238" y="250">Apr</text><text x="294" y="250">May</text><text x="350" y="250">Jun</text>
+            <text x="406" y="250">Jul</text><text x="462" y="250">Aug</text><text x="518" y="250">Sep</text>
+            <text x="574" y="250">Oct</text><text x="630" y="250">Nov</text><text x="686" y="250">Dec</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS (dark) -->
+  <section class="bg-ink text-ink-foreground">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+      <h2 class="text-4xl md:text-[44px] font-bold tracking-[-0.025em] max-w-xl leading-[1.1]">Your visit, in four steps.</h2>
+      <p class="mt-5 max-w-xl text-[17px] leading-[1.7] text-ink-muted">From picking neighborhoods to knowing what to do each hour — the process for building a trip that actually fits your time.</p>
+
+      <p class="mt-14 text-[14px] font-semibold" style="color:#abadec">Step 01</p>
+      <h3 class="mt-2 text-2xl md:text-[28px] font-bold tracking-tight max-w-xl">Figure out how much time you actually have.</h3>
+      <p class="mt-3 max-w-xl text-[15.5px] leading-[1.7] text-ink-muted">We map your available hours against what each neighborhood deserves, so the day doesn't get overbooked.</p>
+
+      <div class="mt-10 bg-card text-foreground rounded-2xl border border-border p-6 md:p-8 card-shadow-lg">
+        <details open>
+          <summary class="flex items-center justify-between focus-ring">
+            <span class="text-[15.5px] font-semibold">Time budget for your ideal trip</span>
+            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5a5a61" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+
+          <div class="mt-6 grid sm:grid-cols-3 gap-4">
+            <div class="rounded-xl border border-border p-5">
+              <p class="text-[14px] font-semibold">Trip goals</p>
+              <div class="mt-4 space-y-4">
+                <div><p class="text-[12.5px] text-muted-foreground">Must-see stops</p><p class="text-lg font-bold">6</p></div>
+                <div><p class="text-[12.5px] text-muted-foreground">Max hours a day</p><p class="text-lg font-bold">8h</p></div>
+                <div><p class="text-[12.5px] text-muted-foreground">Days in town</p><p class="text-lg font-bold">3</p></div>
+              </div>
+            </div>
+            <div class="rounded-xl border border-border p-5">
+              <p class="text-[14px] font-semibold">Time available</p>
+              <div class="mt-4 space-y-4">
+                <div><p class="text-[12.5px] text-muted-foreground">Waking hours / day</p><p class="text-lg font-bold">16h</p></div>
+                <div><p class="text-[12.5px] text-muted-foreground">Sightseeing hours / day</p><p class="text-lg font-bold">10h</p></div>
+              </div>
+            </div>
+            <div class="rounded-xl border border-border p-5">
+              <p class="text-[14px] font-semibold">Pace needed</p>
+              <div class="mt-4 space-y-4">
+                <div><p class="text-[12.5px] text-muted-foreground flex items-center gap-1">Minutes per stop, min <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#abadec" stroke-width="2"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.6" fill="#abadec"/></svg></p><p class="text-lg font-bold">45 min</p></div>
+                <div><p class="text-[12.5px] text-muted-foreground flex items-center gap-1">Stops per day, max <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#abadec" stroke-width="2"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.6" fill="#abadec"/></svg></p><p class="text-lg font-bold">5</p></div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details open class="mt-8 pt-8 border-t border-border">
+          <summary class="flex items-center justify-between focus-ring">
+            <span class="text-[15.5px] font-semibold">My itinerary (preview)</span>
+            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5a5a61" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+
+          <div class="mt-6 grid md:grid-cols-2 gap-4">
+            <div class="rounded-xl border border-border p-5">
+              <p class="text-[14px] font-semibold">Itinerary readiness</p>
+              <p class="mt-3 text-2xl font-bold tracking-tight">92<span class="text-base">%</span> <span class="text-[13px] font-medium text-muted-foreground align-middle">of a comfortable pace</span></p>
+              <div class="relative mt-4">
+                <div class="h-2 rounded-full gauge-track"></div>
+                <div class="absolute top-1/2 -translate-y-1/2" style="left:80%;"><span class="block w-0.5 h-3.5 bg-ink/30"></span></div>
+                <div class="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-success ring-4 ring-success-light" style="left:92%; transform:translate(-50%,-50%);"></div>
+              </div>
+              <p class="mt-2 text-[12.5px] text-muted-foreground">Comfortable minimum</p>
+              <div class="mt-4 rounded-lg border border-success-light bg-success-xlight p-3.5">
+                <p class="text-[12.5px] leading-[1.6]" style="color:#0f3d28">Your plan reaches a comfortable pace for a 3-day trip. Add stops if you want to see more.</p>
+              </div>
+            </div>
+            <div class="rounded-xl border border-border p-5">
+              <p class="text-[14px] font-semibold">Time split</p>
+              <p class="mt-3 text-2xl font-bold tracking-tight">9h <span class="text-[13px] font-medium text-muted-foreground">planned per day</span></p>
+              <div class="mt-4 flex items-center gap-5">
+                <div class="w-16 h-16 rounded-full shrink-0" style="background: conic-gradient(#e97074 0% 61%, oklch(.64 .16 277) 61% 100%);"></div>
+                <div class="text-[12.5px] leading-[1.9]">
+                  <p class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#e97074"></span><span class="font-semibold">5h30</span><span class="text-muted-foreground">Sightseeing</span></p>
+                  <p class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:oklch(.64 .16 277)"></span><span class="font-semibold">3h30</span><span class="text-muted-foreground">Food &amp; drink</span></p>
+                </div>
+              </div>
+              <div class="mt-4 rounded-lg border border-success-light bg-success-xlight p-3.5">
+                <p class="text-[12.5px] leading-[1.6]" style="color:#0f3d28">Your day respects a realistic pace, with two real breaks built in.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- THINGS TO DO -->
+  <section id="things-to-do" class="bg-background">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+      <h2 class="text-4xl md:text-[44px] font-bold tracking-[-0.025em] max-w-lg leading-[1.1]">A few things worth planning around.</h2>
+
+      <div class="mt-14 flex flex-col gap-16 md:gap-20">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+          <div class="rounded-2xl overflow-hidden card-shadow order-1">
+            <img src="https://placehold.co/640x460/2f3241/aeb0bb?text=Topiary+Garden" alt="Placeholder image of the Topiary Garden" class="w-full h-full object-cover">
+          </div>
+          <div class="order-2">
+            <h3 class="text-2xl md:text-[28px] font-bold tracking-tight">Topiary Garden</h3>
+            <p class="mt-3 max-w-md text-[16px] leading-[1.7] text-muted-foreground">Dozens of yew hedges clipped into the people, boats, and shoreline of Georges Seurat's <em class="not-italic font-semibold text-foreground">A Sunday on La Grande Jatte</em> — the only topiary version of a painting anywhere in the world, tucked into a downtown park most visitors walk right past.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+          <div class="order-2 md:order-1">
+            <h3 class="text-2xl md:text-[28px] font-bold tracking-tight">Franklin Park Conservatory</h3>
+            <p class="mt-3 max-w-md text-[16px] leading-[1.7] text-muted-foreground">An 1895 glass conservatory restored down to the ironwork, with permanent Dale Chihuly glass installations threaded through the biomes and a seasonal room full of live butterflies.</p>
+          </div>
+          <div class="rounded-2xl overflow-hidden card-shadow order-1 md:order-2">
+            <img src="https://placehold.co/640x460/abadec/1e2030?text=Franklin+Park+Conservatory" alt="Placeholder image of Franklin Park Conservatory" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+          <div class="rounded-2xl overflow-hidden card-shadow order-1">
+            <img src="https://placehold.co/640x460/e97074/1e2030?text=North+Market" alt="Placeholder image of North Market" class="w-full h-full object-cover">
+          </div>
+          <div class="order-2">
+            <h3 class="text-2xl md:text-[28px] font-bold tracking-tight">North Market</h3>
+            <p class="mt-3 max-w-md text-[16px] leading-[1.7] text-muted-foreground">A public market that's been running since 1876, now a food hall of small vendors instead of butchers and dry-goods stalls. Jeni's Splendid Ice Creams opened its very first shop here.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+          <div class="order-2 md:order-1">
+            <h3 class="text-2xl md:text-[28px] font-bold tracking-tight">COSI</h3>
+            <p class="mt-3 max-w-md text-[16px] leading-[1.7] text-muted-foreground">A hands-on science museum on the riverfront that's built for kids but doesn't talk down to adults. Budget an afternoon — the big-format theater alone can eat an hour.</p>
+          </div>
+          <div class="rounded-2xl overflow-hidden card-shadow order-1 md:order-2">
+            <img src="https://placehold.co/640x460/30a06a/f4f5f9?text=COSI" alt="Placeholder image of COSI science museum" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD & DRINK -->
+  <section id="food" class="bg-ink text-ink-foreground">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 pt-20 md:pt-28">
+      <h2 class="text-4xl md:text-[44px] font-bold tracking-[-0.025em] max-w-xl leading-[1.1]">A food city that doesn't advertise itself as one.</h2>
+      <p class="mt-5 max-w-lg text-[17px] leading-[1.7] text-ink-muted">Columbus chefs have a habit of winning national attention without much local fanfare. Some names to look for:</p>
+    </div>
+
+    <div class="marquee mt-12 md:mt-16 py-8 border-y border-ink-line overflow-hidden">
+      <div class="marquee-track flex w-max gap-0 font-semibold text-3xl md:text-5xl tracking-tight text-ink-foreground/90">
+        <span class="flex items-center gap-10 pr-10">
+          <span>Jeni's Splendid Ice Creams</span><span style="color:#abadec">/</span>
+          <span>North Market</span><span style="color:#abadec">/</span>
+          <span>Land-Grant Brewing</span><span style="color:#abadec">/</span>
+          <span>Wolf's Ridge Brewing</span><span style="color:#abadec">/</span>
+          <span>Fox in the Snow</span><span style="color:#abadec">/</span>
+          <span>Katzinger's Delicatessen</span><span style="color:#abadec">/</span>
+          <span>Watershed Distillery</span><span style="color:#abadec">/</span>
+          <span>Schmidt's Sausage Haus</span><span style="color:#abadec">/</span>
+        </span>
+        <span class="flex items-center gap-10 pr-10" aria-hidden="true">
+          <span>Jeni's Splendid Ice Creams</span><span style="color:#abadec">/</span>
+          <span>North Market</span><span style="color:#abadec">/</span>
+          <span>Land-Grant Brewing</span><span style="color:#abadec">/</span>
+          <span>Wolf's Ridge Brewing</span><span style="color:#abadec">/</span>
+          <span>Fox in the Snow</span><span style="color:#abadec">/</span>
+          <span>Katzinger's Delicatessen</span><span style="color:#abadec">/</span>
+          <span>Watershed Distillery</span><span style="color:#abadec">/</span>
+          <span>Schmidt's Sausage Haus</span><span style="color:#abadec">/</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN YOUR VISIT -->
+  <section id="plan" class="bg-background">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+      <h2 class="text-4xl md:text-[44px] font-bold tracking-[-0.025em] max-w-lg leading-[1.1]">Planning the trip.</h2>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-8">
+        <div class="pt-6 border-t-2" style="border-color:oklch(.64 .16 277)">
+          <h3 class="font-semibold text-[17px]">Getting here</h3>
+          <p class="mt-3 text-[16px] leading-[1.7] text-muted-foreground">John Glenn Columbus International Airport (CMH) sits about fifteen minutes from downtown. By car, Columbus sits at the crossing of I-70 and I-71, so it's rarely more than a few hours from anywhere in Ohio or its neighboring states.</p>
+        </div>
+        <div class="pt-6 border-t-2 border-coral">
+          <h3 class="font-semibold text-[17px]">Getting around</h3>
+          <p class="mt-3 text-[16px] leading-[1.7] text-muted-foreground">The core neighborhoods are walkable on their own, and CoGo Bike Share covers most of the gaps between them. For anything further out — Clintonville to German Village, say — plan on a car or rideshare.</p>
+        </div>
+        <div class="pt-6 border-t-2 border-success">
+          <h3 class="font-semibold text-[17px]">Best time to visit</h3>
+          <p class="mt-3 text-[16px] leading-[1.7] text-muted-foreground">Fall brings Ohio State football Saturdays and the best weather for walking the neighborhoods. Summer means festival season. Spring is the Conservatory's live butterfly exhibit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-ink text-ink-foreground">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <h2 class="text-4xl md:text-6xl font-bold tracking-[-0.025em] max-w-2xl leading-[1.05]">Come see the city everyone underestimates.</h2>
+    <a href="#plan" class="btn-primary focus-ring mt-9 inline-flex items-center px-6 py-3.5 rounded-xl font-semibold">Start planning your trip</a>
+
+    <div class="mt-20 grid sm:grid-cols-3 gap-10 text-sm">
+      <div>
+        <p class="text-ink-muted mb-3">Neighborhoods</p>
+        <ul class="space-y-2 text-ink-foreground/85">
+          <li><a href="#neighborhoods" class="focus-ring hover:text-primary-light">Short North</a></li>
+          <li><a href="#neighborhoods" class="focus-ring hover:text-primary-light">German Village</a></li>
+          <li><a href="#neighborhoods" class="focus-ring hover:text-primary-light">North Market</a></li>
+          <li><a href="#neighborhoods" class="focus-ring hover:text-primary-light">Franklin Park Conservatory</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-ink-muted mb-3">Explore</p>
+        <ul class="space-y-2 text-ink-foreground/85">
+          <li><a href="#things-to-do" class="focus-ring hover:text-primary-light">Things to do</a></li>
+          <li><a href="#food" class="focus-ring hover:text-primary-light">Food &amp; drink</a></li>
+          <li><a href="#plan" class="focus-ring hover:text-primary-light">Plan a trip</a></li>
+          <li><a href="#best-time" class="focus-ring hover:text-primary-light">Best time to visit</a></li>
+        </ul>
+      </div>
+      <div class="sm:text-right">
+        <p class="text-ink-muted">A visitor's guide to Columbus, Ohio.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    if (isOpen) {
+      menu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+      setTimeout(() => { menu.classList.add('hidden'); menu.classList.remove('flex'); }, 300);
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    } else {
+      menu.classList.remove('hidden');
+      menu.classList.add('flex');
+      requestAnimationFrame(() => menu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none'));
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+    }
+  });
+</script>
+
+</body>
+</html>

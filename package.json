@@ -1,0 +1,12 @@
+{
+  "name": "website-building-folder",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node serve.mjs",
+    "shot": "node screenshot.mjs http://localhost:3000"
+  },
+  "dependencies": {
+    "puppeteer": "^25.11.0"
+  }
+}
